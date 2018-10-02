@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstImageLoader", "MyFirstImageLoader\MyFirstImageLoader.csproj", "{EFA897FA-CD9C-460D-BF7B-735E9BF8F2B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkingWithCamera", "WorkingWithCamera\WorkingWithCamera.csproj", "{180BF3F1-A5D3-446B-828A-E810443F832B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerVisionApi", "FaceDetectionApi\ComputerVisionApi.csproj", "{1E43DC17-0BA8-4578-A9FF-50E6E252E674}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinqPadExamples", "LinqPadExamples", "{F56E5050-9C49-4724-8A35-6EFEB76D27FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardExamples", "StandardExamples\StandardExamples.csproj", "{C00EE704-3C47-4FE7-8C6D-3600C9597330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageRecognition", "ImageSearchEngine\ImageRecognition.csproj", "{C1A8DA52-CBAC-45F0-B566-3040A0C77B80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA897FA-CD9C-460D-BF7B-735E9BF8F2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA897FA-CD9C-460D-BF7B-735E9BF8F2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA897FA-CD9C-460D-BF7B-735E9BF8F2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA897FA-CD9C-460D-BF7B-735E9BF8F2B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{180BF3F1-A5D3-446B-828A-E810443F832B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180BF3F1-A5D3-446B-828A-E810443F832B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180BF3F1-A5D3-446B-828A-E810443F832B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180BF3F1-A5D3-446B-828A-E810443F832B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E43DC17-0BA8-4578-A9FF-50E6E252E674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E43DC17-0BA8-4578-A9FF-50E6E252E674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E43DC17-0BA8-4578-A9FF-50E6E252E674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E43DC17-0BA8-4578-A9FF-50E6E252E674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00EE704-3C47-4FE7-8C6D-3600C9597330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00EE704-3C47-4FE7-8C6D-3600C9597330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00EE704-3C47-4FE7-8C6D-3600C9597330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00EE704-3C47-4FE7-8C6D-3600C9597330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A8DA52-CBAC-45F0-B566-3040A0C77B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A8DA52-CBAC-45F0-B566-3040A0C77B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A8DA52-CBAC-45F0-B566-3040A0C77B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A8DA52-CBAC-45F0-B566-3040A0C77B80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DD7C301-7D3A-48EE-AAFD-A45C7C30548C}
+	EndGlobalSection
+EndGlobal
