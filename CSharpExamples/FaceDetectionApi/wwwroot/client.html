@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h2>Input Image</h2>
+    <br />
+
+    <input type="text" placeholder="Image Url" id="imageUrl" name="imageUrl" style="width:300px;" />
+    
+    <button onclick="invokeApi()">Detect</button>
+    <hr />
+    <h2>Result</h2>
+    <br />
+    <div id="result" style="width:400px;">
+
+    </div>
+
+    <script>
+        function invokeApi() {
+            var url = "https://techquantumapi.azurewebsites.net/api/cv/facedetect";
+            var model = {};
+            model.imageUrl = document.getElementById("imageUrl").value;
+
+            $.ajax({
+                type: "post",
+                url: url,
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify(model),
+                success: function (result, status, xhr) {
+                    if (status == "success") {
+                        document.getElementById("result").innerText = JSON.stringify(result);
+                    }
+                    else {
+                        alert('Error!');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
