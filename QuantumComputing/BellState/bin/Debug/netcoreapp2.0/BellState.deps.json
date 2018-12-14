@@ -1,0 +1,77 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "6ad6a0f14d9873a67f8c67918fdfa9f8e9915cab"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "BellState/1.0.0": {
+        "dependencies": {
+          "Microsoft.Quantum.Canon": "0.3.1811.2802-preview",
+          "Microsoft.Quantum.Development.Kit": "0.3.1811.2802-preview"
+        },
+        "runtime": {
+          "BellState.dll": {}
+        }
+      },
+      "Microsoft.Quantum.Canon/0.3.1811.2802-preview": {
+        "dependencies": {
+          "Microsoft.Quantum.Development.Kit": "0.3.1811.2802-preview"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Quantum.Canon.dll": {}
+        }
+      },
+      "Microsoft.Quantum.Development.Kit/0.3.1811.2802-preview": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Quantum.Primitives.dll": {},
+          "lib/netstandard2.0/Microsoft.Quantum.QsCompilerCommon.dll": {},
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.Common.dll": {},
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.Core.dll": {},
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.QCTraceSimulatorRuntime.dll": {},
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.Simulators.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/Microsoft.Quantum.Simulator.Runtime.dll": {
+            "rid": "linux-x64",
+            "assetType": "native"
+          },
+          "runtimes/osx-x64/native/Microsoft.Quantum.Simulator.Runtime.dll": {
+            "rid": "osx-x64",
+            "assetType": "native"
+          },
+          "runtimes/win-x64/native/Microsoft.Quantum.Simulator.Runtime.dll": {
+            "rid": "win-x64",
+            "assetType": "native"
+          },
+          "runtimes/win-x64/native/vcomp140.dll": {
+            "rid": "win-x64",
+            "assetType": "native"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BellState/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Quantum.Canon/0.3.1811.2802-preview": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8Gh7mc43YpwC7SvsZmZN3R1Q+63yZT6HieRb7+9oVO+h2ETURSN+UVdDg8zqdT+dkeOlI5PZ7u9xltnX5swhBg==",
+      "path": "microsoft.quantum.canon/0.3.1811.2802-preview",
+      "hashPath": "microsoft.quantum.canon.0.3.1811.2802-preview.nupkg.sha512"
+    },
+    "Microsoft.Quantum.Development.Kit/0.3.1811.2802-preview": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tpQq2zGTyhducm3RusYLkpJE4TG7jjZPEW5jwNaoLkJ3JU1se3K5Jmk6SWcJrvOMPOJQLWvBzTYRb9aFiJdctA==",
+      "path": "microsoft.quantum.development.kit/0.3.1811.2802-preview",
+      "hashPath": "microsoft.quantum.development.kit.0.3.1811.2802-preview.nupkg.sha512"
+    }
+  }
+}
