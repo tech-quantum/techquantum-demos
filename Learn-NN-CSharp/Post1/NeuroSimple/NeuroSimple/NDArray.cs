@@ -72,21 +72,22 @@ namespace NeuroSimple
         {
             get
             {
-                int index = 0;
-                
-                for (int i = 0; i < indices.Length; i++)
+                var strides = GetContiguousStride();
+                long index = 0;
+                for (int i = 0; i < indices.Length; ++i)
                 {
-                    index += (indices[i] * (i + 1));
+                    index += indices[i] * strides[i];
                 }
 
                 return variable[index];
             }
             set
             {
-                int index = 0;
-                for (int i = 0; i < indices.Length; i++)
+                var strides = GetContiguousStride();
+                long index = 0;
+                for (int i = 0; i < indices.Length; ++i)
                 {
-                    index += indices[i] * (i + 1);
+                    index += indices[i] * strides[i];
                 }
 
                 variable[index] = value;
@@ -94,21 +95,57 @@ namespace NeuroSimple
         }
 
         /// <summary>
+        /// Access or assign the value of the tensor using index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public double this[int index]
+        {
+            get
+            {
+                return variable[index];
+            }
+            set
+            {
+                variable[index] = value;
+            }
+        }
+
+        public int[] GetContiguousStride()
+        {
+            int acc = 1;
+            var stride = new int[Shape.Length];
+
+            for (int i = Shape.Length - 1; i >= 0; --i)
+            {
+                stride[i] = acc;
+                acc *= Shape[i];
+            }
+
+            return stride;
+        }
+
+        /// <summary>
         /// Print the dataset in matrix form
         /// </summary>
-        public void Print()
+        public void Print(string title = "")
         {
+            if(!string.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine(title);
+            }
+
+            Console.WriteLine("---------{0}----------", string.Join(" x ", Shape));
             for (int i = 0; i < Shape[0]; i++)
             {
                 for (int j = 0; j < Shape[1]; j++)
                 {
-                    Console.Write(this[i, j] + "\t");
+                    Console.Write(this[i, j] + "  ");
                 }
 
                 Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
             }
+            Console.WriteLine("-----------------------");
         }
 
         /// <summary>
@@ -178,6 +215,114 @@ namespace NeuroSimple
             for (int i = 0; i < a.Elements; i++)
             {
                 r[i] = a[i] / b[i];
+            }
+
+            return r;
+        }
+
+        /// <summary>
+        /// Check a == b between two tensor elementwise
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray operator ==(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = a[i] == b[i] ? 1 : 0;
+            }
+
+            return r;
+        }
+
+        /// <summary>
+        /// Check a != b between two tensor elementwise
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray operator !=(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = a[i] != b[i] ? 1 : 0;
+            }
+
+            return r;
+        }
+
+        /// <summary>
+        /// Check a > b between two tensor elementwise
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray operator >(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = a[i] > b[i] ? 1 : 0;
+            }
+
+            return r;
+        }
+
+        /// <summary>
+        /// Check a >= b between two tensor elementwise
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray operator >=(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = a[i] >= b[i] ? 1 : 0;
+            }
+
+            return r;
+        }
+
+        /// <summary>
+        /// Check a < b between two tensor elementwise
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray operator <(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = a[i] < b[i] ? 1 : 0;
+            }
+
+            return r;
+        }
+
+        /// <summary>
+        /// Check a <= b between two tensor elementwise
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray operator <=(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = a[i] >= b[i] ? 1 : 0;
             }
 
             return r;

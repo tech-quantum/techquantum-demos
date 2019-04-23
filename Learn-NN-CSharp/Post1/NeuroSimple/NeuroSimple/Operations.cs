@@ -6,6 +6,11 @@ namespace NeuroSimple
 {
     public class Operations
     {
+        /// <summary>
+        /// Create a tensor with random data. Used for declaring weights for the neural network
+        /// </summary>
+        /// <param name="shape"></param>
+        /// <returns></returns>
         public NDArray RandomVariable(params int[] shape)
         {
             NDArray t = new NDArray(shape);
@@ -18,6 +23,12 @@ namespace NeuroSimple
             return t;
         }
 
+        /// <summary>
+        /// Perform the dot product between two matrix. Only applicable to 2D Tensor. 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public NDArray Dot(NDArray a, NDArray b)
         {
             if(a.Shape[1] != b.Shape[0])
@@ -44,6 +55,11 @@ namespace NeuroSimple
             return r;
         }
 
+        /// <summary>
+        /// Calculates the exponential of the tensor
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public NDArray Exp(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
@@ -55,6 +71,11 @@ namespace NeuroSimple
             return result;
         }
 
+        /// <summary>
+        /// Calculates the logrithmic of the tensor
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public NDArray Log(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
@@ -66,6 +87,11 @@ namespace NeuroSimple
             return result;
         }
 
+        /// <summary>
+        /// Calculates the square root of the tensor
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public NDArray Sqrt(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
@@ -77,6 +103,11 @@ namespace NeuroSimple
             return result;
         }
 
+        /// <summary>
+        /// Calculates the square of the tensor
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public NDArray Square(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
@@ -88,13 +119,18 @@ namespace NeuroSimple
             return result;
         }
 
+        /// <summary>
+        /// Transpose the matrix which is formed by turning all the rows of a given matrix into columns and vice-versa.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public NDArray Transpose(NDArray x)
         {
-            NDArray result = new NDArray(x.Shape);
+            NDArray result = new NDArray(x.Shape[1], x.Shape[0]);
 
-            for(int i=0;i<x.Shape[0];i++)
+            for (int i = 0; i < x.Shape[1]; i++)
             {
-                for (int j = 0; j < x.Shape[1]; j++)
+                for (int j = 0; j < x.Shape[0]; j++)
                 {
                     result[i, j] = x[j, i];
                 }
