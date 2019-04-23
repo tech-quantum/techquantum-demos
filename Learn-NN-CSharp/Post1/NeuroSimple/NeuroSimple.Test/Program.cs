@@ -20,7 +20,7 @@ namespace NeuroSimple.Test
             //Create a tensor with all value 5
             NDArray b = new NDArray(6, 3);
             b.Fill(5);
-            b.Print("Constact 5");
+            b.Print("Constant 5");
 
             //Create a tensor with all value 3
             NDArray c = new NDArray(6, 3);
