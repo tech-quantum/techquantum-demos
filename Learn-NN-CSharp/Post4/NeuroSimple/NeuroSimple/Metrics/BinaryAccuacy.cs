@@ -13,7 +13,7 @@ namespace NeuroSimple.Metrics
         public override NDArray Calculate(NDArray preds, NDArray labels)
         {
             var output = Round(Clip(preds, 0, 1));
-            return Mean(preds == labels);
+            return Mean(output == labels);
         }
     }
 }

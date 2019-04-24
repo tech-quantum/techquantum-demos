@@ -61,6 +61,12 @@ namespace NeuroSimple.Layers
         /// <param name="grad"></param>
         public override void Backward(NDArray grad)
         {
+            if(Activation != null)
+            {
+                Activation.Backward(grad);
+                grad = Activation.InputGrad;
+            }
+
             InputGrad = Dot(grad, Parameters["w"].Transpose());
             Grads["w"] = Dot(Input.Transpose(), grad);
         }
