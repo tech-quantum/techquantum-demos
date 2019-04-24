@@ -19,5 +19,10 @@ namespace NeuroSimple.Cost
             output = Mean(-(labels * Log(output) + (1 - labels) * Log(1 - output)));
             return output;
         }
+
+        public override NDArray Backward(NDArray preds, NDArray labels)
+        {
+            return (preds - labels) / (preds * (1 - preds));
+        }
     }
 }

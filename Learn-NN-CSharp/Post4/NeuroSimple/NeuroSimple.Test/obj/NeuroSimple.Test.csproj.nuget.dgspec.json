@@ -1,0 +1,115 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple.Test\\NeuroSimple.Test.csproj": {}
+  },
+  "projects": {
+    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple.Test\\NeuroSimple.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple.Test\\NeuroSimple.Test.csproj",
+        "projectName": "NeuroSimple.Test",
+        "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple.Test\\NeuroSimple.Test.csproj",
+        "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
+        "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj": {
+                "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
+        "projectName": "NeuroSimple",
+        "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
+        "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
+        "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post4\\NeuroSimple\\NeuroSimple\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
