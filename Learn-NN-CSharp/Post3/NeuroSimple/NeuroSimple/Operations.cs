@@ -200,27 +200,38 @@ namespace NeuroSimple
             if(axis.HasValue)
             {
                 List<double> meanValues = new List<double>();
-                if (axis.Value == 0)
-                {
-                    x = x.Transpose();
-                    result = new NDArray(1, x.Shape[1]);
-                   
-                }
-                else if (axis.Value == 1)
+                if (axis.Value == 1)
                 {
                     result = new NDArray(x.Shape[0], 1);
-                }
-
-                for (int i = 0; i < x.Shape[1]; i++)
-                {
-                    double total = 0;
-                    for (int j = 0; j < x.Shape[0]; j++)
+                    for (int i = 0; i < x.Shape[0]; i++)
                     {
-                        total += x[i, j];
+                        double total = 0;
+                        for (int j = 0; j < x.Shape[1]; j++)
+                        {
+                            total += x[i, j];
+                        }
+
+                        meanValues.Add(total / x.Shape[1]);
                     }
 
-                    meanValues.Add(total / x.Shape[0]);
                 }
+                else if (axis.Value == 0)
+                {
+                    result = new NDArray(1, x.Shape[1]);
+                    for (int i = 0; i < x.Shape[1]; i++)
+                    {
+                        double total = 0;
+                        for (int j = 0; j < x.Shape[0]; j++)
+                        {
+                            total += x[i, j];
+                        }
+
+                        meanValues.Add(total / x.Shape[0]);
+                    }
+                }
+
+                
+
                 result.Load(meanValues.ToArray());
             }
             else
