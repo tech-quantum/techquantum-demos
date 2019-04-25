@@ -45,37 +45,54 @@ namespace NeuroSimple.Optimizers
 
         public override void Update(int iteration, BaseLayer layer)
         {
+            //If Decay rate is more than 0, the correct the learnng rate per iteration.
             if (DecayRate > 0)
             {
                 LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
+            //Loop through all the parameters in the layer
             foreach (var p in layer.Parameters.ToList())
             {
+                //Get the parameter name
                 string paramName = p.Key;
+
+                //Create a unique name to store in the dictionary
+                string varName = layer.Name + "_" + p.Key;
+
+                //Get the weight values
                 NDArray param = p.Value;
+
+                //Get the gradient/partial derivative values
                 NDArray grad = layer.Grads[paramName];
 
-                if (!ms.ContainsKey(paramName))
+                //If this is first time, initlalise all the moving average values with 0
+                if (!ms.ContainsKey(varName))
                 {
                     var ms_new = new NDArray(param.Shape);
                     ms_new.Fill(0);
-                    ms[paramName] = ms_new;
+                    ms[varName] = ms_new;
                 }
 
-                if (!vs.ContainsKey(paramName))
+                //If this is first time, initlalise all the moving average values with 0
+                if (!vs.ContainsKey(varName))
                 {
                     var vs_new = new NDArray(param.Shape);
                     vs_new.Fill(0);
-                    vs[paramName] = vs_new;
+                    vs[varName] = vs_new;
                 }
-                    
-                ms[paramName] = (Beta1 * ms[paramName]) + (1 - Beta1) * grad;
-                vs[paramName] = (Beta2 * vs[paramName]) + (1 - Beta2) * Square(grad);
 
-                var m_cap = ms[paramName] / (1 - Math.Pow(Beta1, iteration));
-                var v_cap = vs[paramName] / (1 - Math.Pow(Beta2, iteration));
+                // Calculate the exponential moving average for Beta 1 against the gradient
+                ms[varName] = (Beta1 * ms[varName]) + (1 - Beta1) * grad;
 
+                //Calculate the exponential squared moving average for Beta 2 against the gradient
+                vs[varName] = (Beta2 * vs[varName]) + (1 - Beta2) * Square(grad);
+
+                //Correct the moving averages
+                var m_cap = ms[varName] / (1 - Math.Pow(Beta1, iteration));
+                var v_cap = vs[varName] / (1 - Math.Pow(Beta2, iteration));
+
+                //Update the weight of of the neurons
                 layer.Parameters[paramName] = param - (LearningRate * m_cap / (Sqrt(v_cap) + Epsilon));
             }
         }

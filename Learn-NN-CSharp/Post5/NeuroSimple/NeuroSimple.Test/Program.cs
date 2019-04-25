@@ -44,15 +44,31 @@ namespace NeuroSimple.Test
             var grad = cost.Backward(preds, y);
             fc2.Backward(grad);
             fc1.Backward(fc2.InputGrad);
+
             Console.WriteLine("Param value for FC1 before ADAM optimization");
             fc1.PrintParams(printGrads: false);
 
+            //Initialise ADAM optimizer with default learning rate of 0.01
             BaseOptimizer optimizer = BaseOptimizer.Get("adam");
+
+            //Change the value of learning rate to see the jump is weight changes. 
+            //optimizer.LearningRate = 0.1;
+
+            //Apply optimizer for the first layer for first iteration
             optimizer.Update(1, fc1);
             Console.WriteLine("Param value for FC1 after ADAM optimization");
             fc1.PrintParams(printGrads: false);
 
+            Console.WriteLine("Param value for FC2 before ADAM optimization");
+            fc2.PrintParams(printGrads: false);
+
+            //Apply optimizer for the first layer for first iteration
+            optimizer.Update(1, fc2);
+            Console.WriteLine("Param value for FC2 after ADAM optimization");
+            fc2.PrintParams(printGrads: false);
+
             Console.ReadLine();
         }
+
     }
 }

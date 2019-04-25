@@ -7,6 +7,8 @@ namespace NeuroSimple
 {
     public class Operations
     {
+        public static int LayerIndex = 0;
+
         public double Epsilon = 1e-7;
 
         /// <summary>
@@ -241,6 +243,11 @@ namespace NeuroSimple
             }
 
             return result;
+        }
+
+        public static int GetNext()
+        {
+            return LayerIndex++;
         }
     }
 }
