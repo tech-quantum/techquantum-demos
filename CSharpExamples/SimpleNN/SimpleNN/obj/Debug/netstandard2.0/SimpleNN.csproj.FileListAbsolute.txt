@@ -1,0 +1,6 @@
+C:\git\tech-quantum\CSharpExamples\SimpleNN\SimpleNN\bin\Debug\netstandard2.0\SimpleNN.deps.json
+C:\git\tech-quantum\CSharpExamples\SimpleNN\SimpleNN\bin\Debug\netstandard2.0\SimpleNN.dll
+C:\git\tech-quantum\CSharpExamples\SimpleNN\SimpleNN\obj\Debug\netstandard2.0\SimpleNN.csprojAssemblyReference.cache
+C:\git\tech-quantum\CSharpExamples\SimpleNN\SimpleNN\obj\Debug\netstandard2.0\SimpleNN.csproj.CoreCompileInputs.cache
+C:\git\tech-quantum\CSharpExamples\SimpleNN\SimpleNN\obj\Debug\netstandard2.0\SimpleNN.AssemblyInfoInputs.cache
+C:\git\tech-quantum\CSharpExamples\SimpleNN\SimpleNN\obj\Debug\netstandard2.0\SimpleNN.AssemblyInfo.cs

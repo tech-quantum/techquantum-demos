@@ -77,7 +77,7 @@ namespace NeuroSimple.Test
             y = new NDArray(4, 1);
             y.Load(0, 1, 1, 0);
 
-            iterations = 500;
+            iterations = 750;
             batchSize = 2;
             model = new NeuralNet(new Adam(), new BinaryCrossEntropy(), new BinaryAccuacy());
             model.Add(new FullyConnected(2, 8, "relu"));

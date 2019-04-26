@@ -47,7 +47,7 @@ namespace NeuroSimple
         public List<double> TrainingMetrics { get; set; }
 
         /// <summary>
-        /// Create instanec of the nerural net with parameters
+        /// Create instance of the neural net with parameters
         /// </summary>
         /// <param name="optimizer"></param>
         /// <param name="cost"></param>
@@ -81,36 +81,46 @@ namespace NeuroSimple
         /// <param name="batchSize"></param>
         public void Train(NDArray x, NDArray y, int numIterations, int batchSize)
         {
+            //Initialise bacch loss and metric list for temporary holding of result
             List<double> batchLoss = new List<double>();
             List<double> batchMetrics = new List<double>();
 
+            //Loop through till the end of specified iterations
             for (int i = 1; i <= numIterations; i++)
             {
+                //Initialize local variables
                 int currentIndex = 0;
                 batchLoss.Clear();
                 batchMetrics.Clear();
+
+                //Loop untill the data is exhauted for every batch selected
                 while (x.Next(currentIndex, batchSize))
                 {
+                    //Get the batch data based on the specified batch size
                     var xtrain = x.Slice(currentIndex, batchSize);
                     var ytrain = y.Slice(currentIndex, batchSize);
 
-                    if (xtrain.Equals(null))
-                        break;
-
+                    //Run forward for all the layers to predict the value for the training set
                     var ypred = Forward(xtrain);
 
+                    //Find the loss/cost value for the prediction wrt expected result
                     var costVal = Cost.Forward(ypred, ytrain);
                     batchLoss.AddRange(costVal.Data);
 
+                    //Find the metric value for the prediction wrt expected result
                     if (Metric != null)
                     {
                         var metric = Metric.Calculate(ypred, ytrain);
                         batchMetrics.AddRange(metric.Data);
                     }
 
+                    //Get the gradient of the cost function which is the passed to the layers during back-propagation
                     var grad = Cost.Backward(ypred, ytrain);
+
+                    //Run back-propagation accross all the layers
                     Backward(grad);
 
+                    //Now time to update the neural network weights using the specified optimizer function
                     foreach (var layer in Layers)
                     {
                         Optimizer.Update(i, layer);
@@ -119,6 +129,7 @@ namespace NeuroSimple
                     currentIndex = currentIndex + batchSize; ;
                 }
 
+                //Collect the result and fire the event
                 double batchLossAvg = Math.Round(batchLoss.Average(), 2);
 
                 double batchMetricAvg = Metric != null ? Math.Round(batchMetrics.Average(), 2) : 0;

@@ -219,7 +219,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bdkadmin\\.nuget\\packages\\": {},
+    "C:\\Users\\batt0153\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -228,14 +228,14 @@
       "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
       "projectName": "NeuroSimple",
       "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
-      "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\batt0153\\.nuget\\packages\\",
       "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\batt0153\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -243,7 +243,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/sianet/api/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
