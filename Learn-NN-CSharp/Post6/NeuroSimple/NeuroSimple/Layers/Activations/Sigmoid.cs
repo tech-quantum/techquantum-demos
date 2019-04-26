@@ -14,7 +14,7 @@ namespace NeuroSimple.Layers.Activations
         public override void Forward(NDArray x)
         {
             base.Forward(x);
-            Output = Exp(x) / (1 + Exp(x));
+            Output = 1 / (1 + Exp(-x));
         }
 
         public override void Backward(NDArray grad)

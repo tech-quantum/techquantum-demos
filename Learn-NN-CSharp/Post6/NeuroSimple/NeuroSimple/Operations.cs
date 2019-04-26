@@ -8,6 +8,7 @@ namespace NeuroSimple
     public class Operations
     {
         public static int LayerIndex = 0;
+        Random random = new Random();
 
         public double Epsilon = 1e-7;
 
@@ -19,13 +20,41 @@ namespace NeuroSimple
         public NDArray RandomVariable(params int[] shape)
         {
             NDArray t = new NDArray(shape);
-            Random rand = new Random();
+            
             for (int i = 0; i < t.Elements; i++)
             {
-                t[i] = rand.NextDouble();
+                t[i] = random.NextDouble();
             }
 
+            t = t - 0.5;
+
             return t;
+        }
+
+        //public NDArray RandomUniform(params int[] shape)
+        //{
+        //    NDArray t = new NDArray(shape);
+
+        //    var cauchy = (from x in UniformDistribution() select CauchyQuantile(x));
+        //    double[] results = new double[t.Elements];
+        //    foreach (var datum in cauchy)
+        //    {
+        //        double index = (datum - min);
+        //        results[(int)index] += 1;
+        //    }
+
+        //    t.Load(cauchy.ToArray());
+        //    return t;
+        //}
+
+        private IEnumerable<double> UniformDistribution()
+        {
+            while (true) yield return random.NextDouble();
+        }
+
+        private double CauchyQuantile(double p)
+        {
+            return Math.Tan(Math.PI * (p - 0.5));
         }
 
         /// <summary>
