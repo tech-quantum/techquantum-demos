@@ -14,6 +14,8 @@ namespace NeuroSimple
     /// </summary>
     public class NeuralNet
     {
+        public event EventHandler<EpochEndEventArgs> BatchEnd;
+
         /// <summary>
         /// Layers which the model will contain
         /// </summary>
@@ -126,10 +128,8 @@ namespace NeuroSimple
                 if(batchMetrics.Count > 0)
                     TrainingMetrics.Add(batchMetricAvg);
 
-                if(Metric != null)
-                    Console.WriteLine("Iteration: {0}, Loss: {1}, Metric: {2}", i, batchLossAvg, batchMetricAvg);
-                else
-                    Console.WriteLine("Iteration: {0}, Loss: {1}", i, batchLossAvg);
+                EpochEndEventArgs eventArgs = new EpochEndEventArgs(i, batchLossAvg, batchMetricAvg);
+                BatchEnd?.Invoke(i, eventArgs);
             }
         }
 
@@ -180,5 +180,49 @@ namespace NeuroSimple
                 curGradOutput = layer.InputGrad;
             }
         }
+    }
+
+    public class EpochEndEventArgs
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BatchEndEventArgs"/> class.
+        /// </summary>
+        /// <param name="epoch">The current epoch number.</param>
+        /// <param name="batch">The current batch number.</param>
+        /// <param name="loss">The loss value for the batch.</param>
+        /// <param name="metric">The metric value for the batch.</param>
+        public EpochEndEventArgs(
+            int epoch,
+            double loss,
+            double metric)
+        {
+            Epoch = epoch;
+            Loss = loss;
+            Metric = metric;
+        }
+
+        /// <summary>
+        /// Gets the current epoch number.
+        /// </summary>
+        /// <value>
+        /// The epoch.
+        /// </value>
+        public int Epoch { get; }
+
+        /// <summary>
+        /// Gets the loss value for this batch.
+        /// </summary>
+        /// <value>
+        /// The loss.
+        /// </value>
+        public double Loss { get; }
+
+        /// <summary>
+        /// Gets the metric value for this batch.
+        /// </summary>
+        /// <value>
+        /// The metric.
+        /// </value>
+        public double Metric { get; }
     }
 }

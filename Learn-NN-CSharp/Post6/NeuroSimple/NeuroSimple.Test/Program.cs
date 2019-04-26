@@ -1,35 +1,22 @@
-﻿using NeuroSimple.Cost;
-using NeuroSimple.Layers;
-using NeuroSimple.Metrics;
-using NeuroSimple.Optimizers;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NeuroSimple.Test
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            Operations K = new Operations();
-
-            //Load array to the tensor
-            NDArray x = new NDArray(4, 2);
-            x.Load(0, 0, 0, 1, 1, 0, 1, 1);
-
-            NDArray y = new NDArray(4, 1);
-            y.Load(0, 1, 1, 0);
-
-            var optimizer = new Adam();
-            var cost = new BinaryCrossEntropy();
-            var metric = new BinaryAccuacy();
-            NeuralNet model = new NeuralNet(optimizer, cost, metric);
-            model.Add(new FullyConnected(2, 4, "relu"));
-            //model.Add(new FullyConnected(20, 16, "relu"));
-            model.Add(new FullyConnected(4, 1, "sigmoid"));
-
-            model.Train(x, y, 1000, 4);
-
-            Console.ReadLine();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new TestExecution());
         }
     }
 }
