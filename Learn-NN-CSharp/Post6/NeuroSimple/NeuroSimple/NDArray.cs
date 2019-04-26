@@ -518,6 +518,8 @@ namespace NeuroSimple
 
         public bool Next(int start, int count)
         {
+            start = Shape[1] * start;
+            count = Shape[1] * count;
             if (start >= variable.Length)
             {
                 return false;

@@ -21,7 +21,8 @@ namespace NeuroSimple.Cost
 
         public override NDArray Backward(NDArray preds, NDArray labels)
         {
-            return (preds - labels) / (preds * (1 - preds));
+            var output = Clip(preds, Epsilon, 1 - Epsilon);
+            return (output - labels) / (output * (1 - output));
         }
     }
 }
