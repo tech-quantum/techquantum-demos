@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -45,11 +45,12 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -179,30 +180,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bdkadmin\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/deepakbattini/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post5\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
+      "projectUniqueName": "/Users/deepakbattini/work/git/tech-quantum/Learn-NN-CSharp/Post5/NeuroSimple/NeuroSimple/NeuroSimple.csproj",
       "projectName": "NeuroSimple",
-      "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post5\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
-      "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post5\\NeuroSimple\\NeuroSimple\\obj\\",
+      "projectPath": "/Users/deepakbattini/work/git/tech-quantum/Learn-NN-CSharp/Post5/NeuroSimple/NeuroSimple/NeuroSimple.csproj",
+      "packagesPath": "/Users/deepakbattini/.nuget/packages/",
+      "outputPath": "/Users/deepakbattini/work/git/tech-quantum/Learn-NN-CSharp/Post5/NeuroSimple/NeuroSimple/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/deepakbattini/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

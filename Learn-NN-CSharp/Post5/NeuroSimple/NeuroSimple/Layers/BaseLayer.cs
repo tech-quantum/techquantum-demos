@@ -45,7 +45,7 @@ namespace NeuroSimple.Layers
         /// <param name="name"></param>
         public BaseLayer(string name)
         {
-            Name = name;
+            Name = name + GetNext();
             Parameters = new Dictionary<string, NDArray>();
             Grads = new Dictionary<string, NDArray>();
         }
