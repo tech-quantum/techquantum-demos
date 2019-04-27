@@ -37,6 +37,7 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.btnTrain = new System.Windows.Forms.Button();
             this.WorkerThread = new System.ComponentModel.BackgroundWorker();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartTraining)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,8 +49,7 @@
             this.chartTraining.ChartAreas.Add(chartArea2);
             legend1.Name = "Legend1";
             this.chartTraining.Legends.Add(legend1);
-            this.chartTraining.Location = new System.Drawing.Point(445, 94);
-            this.chartTraining.Margin = new System.Windows.Forms.Padding(4);
+            this.chartTraining.Location = new System.Drawing.Point(334, 76);
             this.chartTraining.Name = "chartTraining";
             this.chartTraining.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.BorderWidth = 2;
@@ -64,25 +64,23 @@
             series2.Name = "Metric";
             this.chartTraining.Series.Add(series1);
             this.chartTraining.Series.Add(series2);
-            this.chartTraining.Size = new System.Drawing.Size(1125, 848);
+            this.chartTraining.Size = new System.Drawing.Size(844, 689);
             this.chartTraining.TabIndex = 0;
             this.chartTraining.Text = "Training Result";
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(0, 94);
-            this.txtConsole.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConsole.Location = new System.Drawing.Point(0, 76);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(436, 847);
+            this.txtConsole.Size = new System.Drawing.Size(328, 689);
             this.txtConsole.TabIndex = 1;
             // 
             // btnTrain
             // 
-            this.btnTrain.Location = new System.Drawing.Point(16, 27);
-            this.btnTrain.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTrain.Location = new System.Drawing.Point(12, 22);
             this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(277, 28);
+            this.btnTrain.Size = new System.Drawing.Size(208, 23);
             this.btnTrain.TabIndex = 2;
             this.btnTrain.Text = "Run Titanic Survival Training";
             this.btnTrain.UseVisualStyleBackColor = true;
@@ -95,15 +93,25 @@
             this.WorkerThread.DoWork += new System.ComponentModel.DoWorkEventHandler(this.WorkerThread_DoWork);
             this.WorkerThread.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.WorkerThread_ProgressChanged);
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(244, 22);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(187, 23);
+            this.btnTest.TabIndex = 3;
+            this.btnTest.Text = "Run Prediction on Unseen Data";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
+            // 
             // TestExecution
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1587, 948);
+            this.ClientSize = new System.Drawing.Size(1190, 770);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.chartTraining);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TestExecution";
             this.Text = "NNet Executer";
             ((System.ComponentModel.ISupportInitialize)(this.chartTraining)).EndInit();
@@ -118,6 +126,7 @@
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.Button btnTrain;
         private System.ComponentModel.BackgroundWorker WorkerThread;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

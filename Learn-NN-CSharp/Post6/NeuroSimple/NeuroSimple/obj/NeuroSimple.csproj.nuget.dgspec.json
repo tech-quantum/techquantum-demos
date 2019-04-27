@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj": {}
+    "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj": {}
   },
   "projects": {
-    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj": {
+    "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
+        "projectUniqueName": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
         "projectName": "NeuroSimple",
-        "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
-        "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
-        "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\obj\\",
+        "projectPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\NeuroSimple.csproj",
+        "packagesPath": "C:\\Users\\deepa\\.nuget\\packages\\",
+        "outputPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Post6\\NeuroSimple\\NeuroSimple\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\deepa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

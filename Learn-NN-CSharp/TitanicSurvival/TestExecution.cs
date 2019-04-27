@@ -44,7 +44,6 @@ namespace TitanicSurvival
             chartTraining.Series["Metric"].XValueMember = "Iteration";
             chartTraining.Series["Metric"].YValueMembers = "Metric";
             chartTraining.Series["Metric"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            
         }
 
         private void BtnTrain_Click(object sender, EventArgs e)
@@ -53,11 +52,11 @@ namespace TitanicSurvival
             LoadTest();
 
             iterations = 200;
-            batchSize = 128;
-            model = new NeuralNet(new Adam(), new MeanSquaredError(), new BinaryAccuacy());
-            model.Add(new FullyConnected(7, 14, "relu"));
-            model.Add(new FullyConnected(14, 14, "relu"));
-            model.Add(new FullyConnected(14, 1, "sigmoid"));
+            batchSize = 32;
+            model = new NeuralNet(new Adam(), new BinaryCrossEntropy(), new BinaryAccuacy());
+            model.Add(new FullyConnected(7, 32, "relu"));
+            model.Add(new FullyConnected(32, 32, "relu"));
+            model.Add(new FullyConnected(32, 1, "sigmoid"));
 
             model.BatchEnd += Model_BatchEnd;
 
@@ -115,7 +114,7 @@ namespace TitanicSurvival
                 return x == "male" ? 1 : 0;
             });
 
-            // Convert S/C/Q -> 0/1/2
+            // Convert S/C/Q -> 1/2/3
             frame["Embarked"] = frame.GetColumn<string>("Embarked").SelectValues<double>((x) => {
                 if (x == "S")
                     return 1;
@@ -160,6 +159,19 @@ namespace TitanicSurvival
             trainingData.Rows.Add(dr);
             chartTraining.DataBind();
             chartTraining.Update();
+        }
+
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            txtConsole.Clear();
+            Operations K = new Operations();
+            var result = K.Round(model.Predict(test));
+            var frame = Frame.ReadCsv("test.csv", true);
+            for (int i = 0; i < 25; i++)
+            {
+                string status = result[i] == 1 ? "Survived" : "Died";
+                txtConsole.AppendText(frame.Rows[i]["Name"] + " :  " + status + "\n\n");
+            }
         }
     }
 }
