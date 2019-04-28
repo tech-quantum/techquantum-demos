@@ -30,7 +30,7 @@ namespace NeuroSimple.Layers
         /// </summary>
         /// <param name="in">Number of incoming input features</param>
         /// <param name="out">Number of neurons for this layers</param>
-        public FullyConnected(int input_dim, int output_neurons, string act) : base("fc")
+        public FullyConnected(int input_dim, int output_neurons, string act = "") : base("fc")
         {
             Parameters["w"] = RandomVariable(input_dim, output_neurons);
             InputDim = input_dim;
