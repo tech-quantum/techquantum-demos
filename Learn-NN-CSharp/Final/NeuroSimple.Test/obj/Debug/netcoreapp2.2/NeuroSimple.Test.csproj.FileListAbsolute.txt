@@ -1,0 +1,14 @@
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.Test.deps.json
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.Test.runtimeconfig.json
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.Test.runtimeconfig.dev.json
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.Test.dll
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.Test.pdb
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.dll
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Debug\netcoreapp2.2\NeuroSimple.pdb
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.csprojAssemblyReference.cache
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.csproj.CoreCompileInputs.cache
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.AssemblyInfoInputs.cache
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.AssemblyInfo.cs
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.csproj.CopyComplete
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.dll
+E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Debug\netcoreapp2.2\NeuroSimple.Test.pdb
