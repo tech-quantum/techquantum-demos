@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Numerics;
+
 
 namespace NeuroSimple
 {
-    public class NDArray
+    public class NDArray : Operations
     {
         /// <summary>
         /// Variable to hold the data in form of array
         /// </summary>
-        private double[] variable;
+        private float[] variable;
 
         /// <summary>
         /// Shape of the dataset, can be anything from 1D, 2D or 3D. For 2D: (3, 5) which will be a matrix of size 3 x 5
@@ -39,28 +41,16 @@ namespace NeuroSimple
         public NDArray(params int[] shape)
         {
             Shape = shape;
-            variable = new double[Elements];
+            variable = new float[Elements];
         }
 
         /// <summary>
         /// Helper function to load the data in the NDArray
         /// </summary>
         /// <param name="data"></param>
-        public void Load(params double[] data)
+        public void Load(params float[] data)
         {
             variable = data;
-        }
-
-        /// <summary>
-        /// Fill the array with constant value
-        /// </summary>
-        /// <param name="value"></param>
-        public void Fill(double value)
-        {
-            for (int i = 0; i < Elements; i++)
-            {
-                variable[i] = value;
-            }
         }
 
         /// <summary>
@@ -68,7 +58,7 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="indices"></param>
         /// <returns></returns>
-        public double this[params int[] indices]
+        public float this[params int[] indices]
         {
             get
             {
@@ -99,7 +89,7 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public double this[int index]
+        public float this[int index]
         {
             get
             {
@@ -149,7 +139,7 @@ namespace NeuroSimple
             Console.WriteLine("-----------------------\n\n");
         }
 
-        public double[] Data
+        public float[] Data
         {
             get
             {
@@ -165,28 +155,19 @@ namespace NeuroSimple
         /// <returns></returns>
         public static NDArray operator +(NDArray a, NDArray b)
         {
-            NDArray r = new NDArray(a.Shape);
-
-            for (int i = 0; i < a.Elements; i++)
-            {
-                r[i] = a[i] + b[i];
-            }
-
-            return r;
+            return Add(a, b);
         }
 
-        public static NDArray operator +(NDArray a, double b)
+        public static NDArray operator +(NDArray a, float b)
         {
             NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
-            return a + t_b;
+            return Add(a, Constant(b, a.Shape));
         }
 
-        public static NDArray operator +(double a, NDArray b)
+        public static NDArray operator +(float a, NDArray b)
         {
             NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
-            return t_a + b;
+            return Add(Constant(a, b.Shape), b);
         }
 
         /// <summary>
@@ -197,28 +178,19 @@ namespace NeuroSimple
         /// <returns></returns>
         public static NDArray operator -(NDArray a, NDArray b)
         {
-            NDArray r = new NDArray(a.Shape);
-
-            for (int i = 0; i < a.Elements; i++)
-            {
-                r[i] = a[i] - b[i];
-            }
-
-            return r;
+            return Sub(a, b);
         }
 
-        public static NDArray operator -(NDArray a, double b)
+        public static NDArray operator -(NDArray a, float b)
         {
             NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
-            return a - t_b;
+            return Sub(a, Constant(b, a.Shape));
         }
 
-        public static NDArray operator -(double a, NDArray b)
+        public static NDArray operator -(float a, NDArray b)
         {
             NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
-            return t_a - b;
+            return Sub(Constant(a, b.Shape), b);
         }
 
         /// <summary>
@@ -229,28 +201,19 @@ namespace NeuroSimple
         /// <returns></returns>
         public static NDArray operator *(NDArray a, NDArray b)
         {
-            NDArray r = new NDArray(a.Shape);
-
-            for (int i = 0; i < a.Elements; i++)
-            {
-                r[i] = a[i] * b[i];
-            }
-
-            return r;
+            return Mul(a, b);
         }
 
-        public static NDArray operator *(NDArray a, double b)
+        public static NDArray operator *(NDArray a, float b)
         {
             NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
-            return a * t_b;
+            return Mul(a,Constant(b, a.Shape));
         }
 
-        public static NDArray operator *(double a, NDArray b)
+        public static NDArray operator *(float a, NDArray b)
         {
             NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
-            return t_a * b;
+            return Mul(Constant(a, b.Shape), b);
         }
 
         /// <summary>
@@ -261,28 +224,19 @@ namespace NeuroSimple
         /// <returns></returns>
         public static NDArray operator /(NDArray a, NDArray b)
         {
-            NDArray r = new NDArray(a.Shape);
-
-            for (int i = 0; i < a.Elements; i++)
-            {
-                r[i] = a[i] / b[i];
-            }
-
-            return r;
+            return Div(a, b);
         }
 
-        public static NDArray operator /(NDArray a, double b)
+        public static NDArray operator /(NDArray a, float b)
         {
             NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
-            return a / t_b;
+            return Div(a, Constant(b, a.Shape));
         }
 
-        public static NDArray operator /(double a, NDArray b)
+        public static NDArray operator /(float a, NDArray b)
         {
             NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
-            return t_a / b;
+            return Div(Constant(a, b.Shape), b);
         }
 
         /// <summary>
@@ -292,14 +246,7 @@ namespace NeuroSimple
         /// <returns></returns>
         public static NDArray operator -(NDArray a)
         {
-            NDArray r = new NDArray(a.Shape);
-
-            for (int i = 0; i < a.Elements; i++)
-            {
-                r[i] = -a[i];
-            }
-
-            return r;
+            return Neg(a);
         }
 
         /// <summary>
@@ -320,17 +267,15 @@ namespace NeuroSimple
             return r;
         }
 
-        public static NDArray operator ==(NDArray a, double b)
+        public static NDArray operator ==(NDArray a, float b)
         {
-            NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
+            NDArray t_b = Constant(b, a.Shape);
             return a == t_b;
         }
 
-        public static NDArray operator ==(double a, NDArray b)
+        public static NDArray operator ==(float a, NDArray b)
         {
-            NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
+            NDArray t_a = Constant(a, b.Shape);
             return t_a == b;
         }
 
@@ -352,17 +297,15 @@ namespace NeuroSimple
             return r;
         }
 
-        public static NDArray operator !=(NDArray a, double b)
+        public static NDArray operator !=(NDArray a, float b)
         {
-            NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
+            NDArray t_b = Constant(b, a.Shape);
             return a != t_b;
         }
 
-        public static NDArray operator !=(double a, NDArray b)
+        public static NDArray operator !=(float a, NDArray b)
         {
-            NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
+            NDArray t_a = Constant(a, b.Shape);
             return t_a != b;
         }
 
@@ -384,17 +327,15 @@ namespace NeuroSimple
             return r;
         }
 
-        public static NDArray operator >(NDArray a, double b)
+        public static NDArray operator >(NDArray a, float b)
         {
-            NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
+            NDArray t_b = Constant(b, a.Shape);
             return a > t_b;
         }
 
-        public static NDArray operator >(double a, NDArray b)
+        public static NDArray operator >(float a, NDArray b)
         {
-            NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
+            NDArray t_a = Constant(a, b.Shape);
             return t_a > b;
         }
 
@@ -416,17 +357,15 @@ namespace NeuroSimple
             return r;
         }
 
-        public static NDArray operator >=(NDArray a, double b)
+        public static NDArray operator >=(NDArray a, float b)
         {
-            NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
+            NDArray t_b = Constant(b, a.Shape);
             return a >= t_b;
         }
 
-        public static NDArray operator >=(double a, NDArray b)
+        public static NDArray operator >=(float a, NDArray b)
         {
-            NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
+            NDArray t_a = Constant(a, b.Shape);
             return t_a >= b;
         }
 
@@ -448,17 +387,15 @@ namespace NeuroSimple
             return r;
         }
 
-        public static NDArray operator <(NDArray a, double b)
+        public static NDArray operator <(NDArray a, float b)
         {
-            NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
+            NDArray t_b = Constant(b, a.Shape);
             return a < t_b;
         }
 
-        public static NDArray operator <(double a, NDArray b)
+        public static NDArray operator <(float a, NDArray b)
         {
-            NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
+            NDArray t_a = Constant(a, b.Shape);
             return t_a < b;
         }
 
@@ -480,17 +417,15 @@ namespace NeuroSimple
             return r;
         }
 
-        public static NDArray operator <=(NDArray a, double b)
+        public static NDArray operator <=(NDArray a, float b)
         {
-            NDArray t_b = new NDArray(a.Shape);
-            t_b.Fill(b);
+            NDArray t_b = Constant(b, a.Shape);
             return a <= t_b;
         }
 
-        public static NDArray operator <=(double a, NDArray b)
+        public static NDArray operator <=(float a, NDArray b)
         {
-            NDArray t_a = new NDArray(b.Shape);
-            t_a.Fill(a);
+            NDArray t_a = Constant(a, b.Shape);
             return t_a <= b;
         }
 
@@ -501,7 +436,7 @@ namespace NeuroSimple
         public NDArray Transpose()
         {
             Operations operations = new Operations();
-            return operations.Transpose(this);
+            return Operations.Transpose(this);
         }
 
         public NDArray Slice(int start, int count)

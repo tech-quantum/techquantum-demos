@@ -19,7 +19,7 @@ namespace NeuroSimple.Cost
 
         public override NDArray Backward(NDArray preds, NDArray labels)
         {
-            double norm = 2 / (double)preds.Shape[0];
+            float norm = 2 / (float)preds.Shape[0];
             return norm * (preds - labels);
         }
     }

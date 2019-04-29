@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Diagnostics;
 
 namespace NeuroSimple
 {
@@ -14,7 +15,7 @@ namespace NeuroSimple
     /// </summary>
     public class NeuralNet
     {
-        public event EventHandler<EpochEndEventArgs> BatchEnd;
+        public event EventHandler<EpochEndEventArgs> EpochEnd;
 
         /// <summary>
         /// Layers which the model will contain
@@ -39,12 +40,12 @@ namespace NeuroSimple
         /// <summary>
         /// Training losses for all the iterations
         /// </summary>
-        public List<double> TrainingLoss { get; set; }
+        public List<float> TrainingLoss { get; set; }
 
         /// <summary>
         /// Training metrices for all the iterations
         /// </summary>
-        public List<double> TrainingMetrics { get; set; }
+        public List<float> TrainingMetrics { get; set; }
 
         /// <summary>
         /// Create instance of the neural net with parameters
@@ -55,8 +56,8 @@ namespace NeuroSimple
         public NeuralNet(BaseOptimizer optimizer, BaseCost cost, BaseMetric metric = null)
         {
             Layers = new List<BaseLayer>();
-            TrainingLoss = new List<double>();
-            TrainingMetrics = new List<double>();
+            TrainingLoss = new List<float>();
+            TrainingMetrics = new List<float>();
 
             this.Optimizer = optimizer != null ? optimizer : throw new Exception("Need optimizer");
             this.Cost = cost != null ? cost : throw new Exception("Need cost");
@@ -82,12 +83,16 @@ namespace NeuroSimple
         public void Train(NDArray x, NDArray y, int numIterations, int batchSize)
         {
             //Initialise bacch loss and metric list for temporary holding of result
-            List<double> batchLoss = new List<double>();
-            List<double> batchMetrics = new List<double>();
+            List<float> batchLoss = new List<float>();
+            List<float> batchMetrics = new List<float>();
+
+            Stopwatch sw = new Stopwatch();
 
             //Loop through till the end of specified iterations
             for (int i = 1; i <= numIterations; i++)
             {
+                sw.Start();
+
                 //Initialize local variables
                 int currentIndex = 0;
                 batchLoss.Clear();
@@ -129,18 +134,20 @@ namespace NeuroSimple
                     currentIndex = currentIndex + batchSize; ;
                 }
 
+                sw.Stop();
                 //Collect the result and fire the event
-                double batchLossAvg = Math.Round(batchLoss.Average(), 2);
+                float batchLossAvg = (float)Math.Round(batchLoss.Average(), 2);
 
-                double batchMetricAvg = Metric != null ? Math.Round(batchMetrics.Average(), 2) : 0;
+                float batchMetricAvg = Metric != null ? (float)Math.Round(batchMetrics.Average(), 2) : 0;
 
                 TrainingLoss.Add(batchLossAvg);
 
                 if(batchMetrics.Count > 0)
                     TrainingMetrics.Add(batchMetricAvg);
 
-                EpochEndEventArgs eventArgs = new EpochEndEventArgs(i, batchLossAvg, batchMetricAvg);
-                BatchEnd?.Invoke(i, eventArgs);
+                EpochEndEventArgs eventArgs = new EpochEndEventArgs(i, batchLossAvg, batchMetricAvg, sw.ElapsedMilliseconds);
+                EpochEnd?.Invoke(i, eventArgs);
+                sw.Reset();
             }
         }
 
@@ -204,12 +211,14 @@ namespace NeuroSimple
         /// <param name="metric">The metric value for the batch.</param>
         public EpochEndEventArgs(
             int epoch,
-            double loss,
-            double metric)
+            float loss,
+            float metric,
+            long duration)
         {
             Epoch = epoch;
             Loss = loss;
             Metric = metric;
+            Duration = duration;
         }
 
         /// <summary>
@@ -226,7 +235,7 @@ namespace NeuroSimple
         /// <value>
         /// The loss.
         /// </value>
-        public double Loss { get; }
+        public float Loss { get; }
 
         /// <summary>
         /// Gets the metric value for this batch.
@@ -234,6 +243,11 @@ namespace NeuroSimple
         /// <value>
         /// The metric.
         /// </value>
-        public double Metric { get; }
+        public float Metric { get; }
+
+        /// <summary>
+        /// Time taken in ms per iteration
+        /// </summary>
+        public long Duration { get; }
     }
 }

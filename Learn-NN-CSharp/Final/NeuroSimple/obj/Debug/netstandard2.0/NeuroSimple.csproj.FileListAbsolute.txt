@@ -70,3 +70,12 @@ E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netst
 E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.AssemblyInfo.cs
 E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.dll
 E:\DeepakProj\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.pdb
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\bin\Debug\netstandard2.0\NeuroSimple.deps.json
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\bin\Debug\netstandard2.0\NeuroSimple.dll
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\bin\Debug\netstandard2.0\NeuroSimple.pdb
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.csprojAssemblyReference.cache
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.csproj.CoreCompileInputs.cache
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.AssemblyInfoInputs.cache
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.AssemblyInfo.cs
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.dll
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple\obj\Debug\netstandard2.0\NeuroSimple.pdb

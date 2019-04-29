@@ -2,33 +2,48 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Numerics;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace NeuroSimple
 {
     public class Operations
     {
         public static int LayerIndex = 0;
-        Random random = new Random();
-
-        public double Epsilon = 1e-7;
+        static Random random = new Random();
+        
+        public static float Epsilon = 1e-7f;
 
         /// <summary>
         /// Create a tensor with random data. Used for declaring weights for the neural network
         /// </summary>
         /// <param name="shape"></param>
         /// <returns></returns>
-        public NDArray RandomVariable(params int[] shape)
+        public static NDArray RandomVariable(params int[] shape)
         {
             NDArray t = new NDArray(shape);
             
-            for (int i = 0; i < t.Elements; i++)
+            Parallel.For(0, t.Elements, i =>
             {
-                t[i] = random.NextDouble();
-            }
+                t[i] = (float)random.NextDouble();
+            });
 
-            t = t - 0.5;
+            t = t - 0.5f;
 
             return t;
+        }
+
+        public static NDArray Constant(float value, params int[] shape)
+        {
+            NDArray x = new NDArray(shape);
+
+            Parallel.For(0, x.Elements, i =>
+            {
+                x[i] = value;
+            });
+
+            return x;
         }
 
         /// <summary>
@@ -37,7 +52,7 @@ namespace NeuroSimple
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public NDArray Dot(NDArray a, NDArray b)
+        public static NDArray Dot(NDArray a, NDArray b)
         {
             if(a.Shape[1] != b.Shape[0])
             {
@@ -48,17 +63,17 @@ namespace NeuroSimple
             int q = b.Shape[1];
             int n = a.Shape[1];
             NDArray r = new NDArray(m, q);
-            for (int i = 0; i < m; i++)
+
+            Parallel.For(0, m, i =>
             {
-                for (int j = 0; j < q; j++)
+                Parallel.For(0, q, j =>
                 {
-                    r[i, j] = 0;
-                    for (int k = 0; k < n; k++)
+                    Parallel.For(0, n, k =>
                     {
                         r[i, j] += a[i, k] * b[k, j];
-                    }
-                }
-            }
+                    });
+                });
+            });
 
             return r;
         }
@@ -68,13 +83,14 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public NDArray Exp(NDArray x)
+        public static NDArray Exp(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+            
+            Parallel.For(0, x.Elements, i =>
             {
-                result[i] = Math.Exp(x[i]);
-            }
+                result[i] = (float)Math.Exp(x[i]);
+            });
 
             return result;
         }
@@ -84,13 +100,14 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public NDArray Log(NDArray x)
+        public static NDArray Log(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+           
+            Parallel.For(0, x.Elements, i =>
             {
-                result[i] = Math.Log(x[i]);
-            }
+                result[i] = (float)Math.Log(x[i]);
+            });
 
             return result;
         }
@@ -100,15 +117,15 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public NDArray Sqrt(NDArray x)
+        public static NDArray Sqrt(NDArray x)
         {
-            NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+            NDArray r = new NDArray(x.Shape);
+            Parallel.For(0, x.Elements, i =>
             {
-                result[i] = Math.Sqrt(x[i]);
-            }
+                r[i] = (float)Math.Sqrt(x[i]);
+            });
 
-            return result;
+            return r;
         }
 
         /// <summary>
@@ -116,13 +133,13 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public NDArray Square(NDArray x)
+        public static NDArray Square(NDArray x)
         {
             NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+            Parallel.For(0, x.Elements, i =>
             {
-                result[i] = Math.Pow(x[i], 2);
-            }
+                result[i] = (float)Math.Pow(x[i], 2);
+            });
 
             return result;
         }
@@ -132,17 +149,16 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public NDArray Transpose(NDArray x)
+        public static NDArray Transpose(NDArray x)
         {
             NDArray result = new NDArray(x.Shape[1], x.Shape[0]);
 
-            for (int i = 0; i < x.Shape[1]; i++)
+            Parallel.For(0, x.Shape[1], i =>
             {
-                for (int j = 0; j < x.Shape[0]; j++)
-                {
+                Parallel.For(0, x.Shape[0], j => {
                     result[i, j] = x[j, i];
-                }
-            }
+                });
+            });
 
             return result;
         }
@@ -154,13 +170,14 @@ namespace NeuroSimple
         /// <param name="min"></param>
         /// <param name="max"></param>
         /// <returns></returns>
-        public NDArray Clip(NDArray x, double min, double max)
+        public static NDArray Clip(NDArray x, float min, float max)
         {
             NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+            
+            Parallel.For(0, x.Elements, i =>
             {
                 result[i] = (x[i] < min) ? min : (x[i] > max) ? max : x[i];
-            }
+            });
 
             return result;
         }
@@ -170,26 +187,26 @@ namespace NeuroSimple
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public NDArray Round(NDArray x)
+        public static NDArray Round(NDArray x)
         {
-            NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+            NDArray r = new NDArray(x.Shape);
+            Parallel.For(0, x.Elements , i =>
             {
-                result[i] = Math.Round(x[i]);
-            }
+                r[i] = (float)Math.Round(x[i]);
+            });
 
-            return result;
+            return r;
         }
 
-        public NDArray Abs(NDArray x)
+        public static NDArray Abs(NDArray x)
         {
-            NDArray result = new NDArray(x.Shape);
-            for (int i = 0; i < x.Elements; i++)
+            NDArray r = new NDArray(x.Shape);
+            Parallel.For(0, x.Elements, i =>
             {
-                result[i] = Math.Abs(x[i]);
-            }
+                r[i] = Math.Abs(x[i]);
+            });
 
-            return result;
+            return r;
         }
 
         /// <summary>
@@ -198,52 +215,12 @@ namespace NeuroSimple
         /// <param name="x"></param>
         /// <param name="axis"></param>
         /// <returns></returns>
-        public NDArray Mean(NDArray x, uint? axis = null)
+        public static NDArray Mean(NDArray x)
         {
             NDArray result = null;
 
-            if(axis.HasValue)
-            {
-                List<double> meanValues = new List<double>();
-                if (axis.Value == 1)
-                {
-                    result = new NDArray(x.Shape[0], 1);
-                    for (int i = 0; i < x.Shape[0]; i++)
-                    {
-                        double total = 0;
-                        for (int j = 0; j < x.Shape[1]; j++)
-                        {
-                            total += x[i, j];
-                        }
-
-                        meanValues.Add(total / x.Shape[1]);
-                    }
-
-                }
-                else if (axis.Value == 0)
-                {
-                    result = new NDArray(1, x.Shape[1]);
-                    for (int i = 0; i < x.Shape[1]; i++)
-                    {
-                        double total = 0;
-                        for (int j = 0; j < x.Shape[0]; j++)
-                        {
-                            total += x[i, j];
-                        }
-
-                        meanValues.Add(total / x.Shape[0]);
-                    }
-                }
-
-                
-
-                result.Load(meanValues.ToArray());
-            }
-            else
-            {
-                result = new NDArray(1, 1);
-                result.Load(x.Data.Average());
-            }
+            result = new NDArray(1, 1);
+            result.Load(x.Data.Average());
 
             return result;
         }
@@ -251,6 +228,163 @@ namespace NeuroSimple
         public static int GetNext()
         {
             return LayerIndex++;
+        }
+
+        //Basic Math Ops
+        /// <summary>
+        /// Add two tensor
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray Add(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            Parallel.For(0, a.Elements, i =>
+            {
+                r[i] = a[i] + b[i];
+            });
+
+            return r;
+        }
+
+        /// <summary>
+        /// Subtraction of two NDArray
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray Sub(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            Parallel.For(0, a.Elements, i =>
+            {
+                r[i] = a[i] - b[i];
+            });
+
+            return r;
+        }
+
+        /// <summary>
+        /// Multiplication of two NDArray
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray Mul(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            Parallel.For(0, a.Elements, i =>
+            {
+                r[i] = a[i] * b[i];
+            });
+
+            return r;
+        }
+
+        /// <summary>
+        /// Division of two NDArray
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static NDArray Div(NDArray a, NDArray b)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            Parallel.For(0, a.Elements, i =>
+            {
+                r[i] = a[i] / b[i];
+            });
+
+            return r;
+        }
+
+        /// <summary>
+        /// Negates the values in the tensor
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static NDArray Neg(NDArray a)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            Parallel.For(0, a.Elements, i =>
+            {
+                r[i] = -a[i];
+            });
+
+            return r;
+        }
+
+        public static NDArray ArgMax(NDArray x)
+        {
+            NDArray result = new NDArray(x.Shape[0], 1);
+
+            Parallel.For(0, x.Shape[0], i =>
+            {
+                float maxVal = 0;
+                float maxIndex = 0;
+
+                Parallel.For(0, x.Shape[1], j =>
+                {
+                    if (x[i, j] > maxVal)
+                    {
+                        maxVal = x[i, j];
+                        maxIndex = j;
+                    }
+                });
+
+                result[i] = maxIndex;
+            });
+
+            return result;
+        }
+
+        public static NDArray SumY(NDArray x)
+        {
+            NDArray result = new NDArray(x.Shape[0], 1);
+
+            Parallel.For(0, x.Shape[0], i =>
+            {
+                Parallel.For(0, x.Shape[1], j =>
+                {
+                    result[i] += x[i, j];
+                });
+            });
+
+            return result;
+        }
+
+        public static NDArray MaxY(NDArray x)
+        {
+            NDArray result = new NDArray(x.Shape[0], 1);
+
+            Parallel.For(0, x.Shape[0], i =>
+            {
+                float maxVal = 0;
+                Parallel.For(0, x.Shape[1], j =>
+                {
+                    if (x[i, j] > maxVal)
+                    {
+                        maxVal = x[i, j];
+                    }
+                });
+
+                result[i] = maxVal;
+            });
+
+            return result;
+        }
+
+        public static NDArray Softmax(NDArray x)
+        {
+            var e = Exp(x - MaxY(x));
+            var s = SumY(e);
+            return e / s;
         }
     }
 }

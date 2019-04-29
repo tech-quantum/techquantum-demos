@@ -1,0 +1,15 @@
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\train.csv
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.Test.deps.json
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.Test.runtimeconfig.json
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.Test.runtimeconfig.dev.json
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.Test.dll
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.Test.pdb
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.dll
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\bin\Release\netcoreapp2.1\NeuroSimple.pdb
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.csprojAssemblyReference.cache
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.csproj.CoreCompileInputs.cache
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.AssemblyInfoInputs.cache
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.AssemblyInfo.cs
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.csproj.CopyComplete
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.dll
+C:\git\tech-quantum\Learn-NN-CSharp\Final\NeuroSimple.Test\obj\Release\netcoreapp2.1\NeuroSimple.Test.pdb
