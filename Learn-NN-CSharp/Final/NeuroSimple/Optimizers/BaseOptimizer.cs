@@ -21,7 +21,7 @@ namespace NeuroSimple.Optimizers
         /// <value>
         /// The learning rate.
         /// </value>
-        public double LearningRate { get; set; }
+        public float LearningRate { get; set; }
 
         /// <summary>
         /// Parameter that accelerates SGD in the relevant direction and dampens oscillations.
@@ -29,7 +29,7 @@ namespace NeuroSimple.Optimizers
         /// <value>
         /// The momentum.
         /// </value>
-        public double Momentum { get; set; }
+        public float Momentum { get; set; }
 
         /// <summary>
         /// Learning rate decay over each update.
@@ -37,14 +37,14 @@ namespace NeuroSimple.Optimizers
         /// <value>
         /// The decay rate.
         /// </value>
-        public double DecayRate { get; set; }
+        public float DecayRate { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseOptimizer"/> class.
         /// </summary>
         /// <param name="lr">The lr.</param>
         /// <param name="name">The name.</param>
-        public BaseOptimizer(double lr, string name)
+        public BaseOptimizer(float lr, string name)
         {
             LearningRate = lr;
             Name = name;

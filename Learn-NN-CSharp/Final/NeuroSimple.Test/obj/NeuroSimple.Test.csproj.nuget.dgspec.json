@@ -1,37 +1,43 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj": {}
+    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj": {}
   },
   "projects": {
-    "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj": {
+    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj",
+        "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj",
         "projectName": "NeuroSimple.Test",
-        "projectPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj",
-        "packagesPath": "C:\\Users\\deepa\\.nuget\\packages\\",
-        "outputPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\obj\\",
+        "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\NeuroSimple.Test.csproj",
+        "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
+        "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\deepa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore-tooling/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-entityframeworkcore/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/dotnet-windowsdesktop/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj": {
-                "projectPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj"
+              "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj": {
+                "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj"
               }
             }
           }
@@ -43,12 +49,20 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp2.1": {
           "dependencies": {
+            "Deedle": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.6.2, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.2.0, )",
+              "version": "[2.1.0, )",
               "autoReferenced": true
             }
           },
@@ -60,20 +74,20 @@
         }
       }
     },
-    "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj": {
+    "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj",
+        "projectUniqueName": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj",
         "projectName": "NeuroSimple",
-        "projectPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj",
-        "packagesPath": "C:\\Users\\deepa\\.nuget\\packages\\",
-        "outputPath": "E:\\DeepakProj\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\obj\\",
+        "projectPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\NeuroSimple.csproj",
+        "packagesPath": "C:\\Users\\bdkadmin\\.nuget\\packages\\",
+        "outputPath": "C:\\git\\tech-quantum\\Learn-NN-CSharp\\Final\\NeuroSimple\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\deepa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bdkadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +95,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore-tooling/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-aspnetcore/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-entityframeworkcore/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/dotnet-windowsdesktop/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -106,6 +126,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.2, )"
+            },
+            "System.Numerics.Vectors": {
+              "target": "Package",
+              "version": "[4.6.0-preview4.19212.13, )"
+            },
+            "System.Runtime.Numerics": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

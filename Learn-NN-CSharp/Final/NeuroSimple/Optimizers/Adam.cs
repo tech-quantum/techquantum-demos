@@ -21,7 +21,7 @@ namespace NeuroSimple.Optimizers
         /// <value>
         /// The beta1.
         /// </value>
-        public double Beta1 { get; set; }
+        public float Beta1 { get; set; }
 
         /// <summary>
         /// Gets or sets the beta 2 value.
@@ -29,12 +29,12 @@ namespace NeuroSimple.Optimizers
         /// <value>
         /// The beta2.
         /// </value>
-        public double Beta2 { get; set; }
+        public float Beta2 { get; set; }
 
         private Dictionary<string, NDArray> ms;
         private Dictionary<string, NDArray> vs;
 
-        public Adam(double lr = 0.01, double beta_1 = 0.9, double beta_2 = 0.999, double decayRate = 0) : base(lr, "adam")
+        public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0) : base(lr, "adam")
         {
             Beta1 = beta_1;
             Beta2 = beta_2;
@@ -69,16 +69,14 @@ namespace NeuroSimple.Optimizers
                 //If this is first time, initlalise all the moving average values with 0
                 if (!ms.ContainsKey(varName))
                 {
-                    var ms_new = new NDArray(param.Shape);
-                    ms_new.Fill(0);
+                    var ms_new = Constant(0, param.Shape);
                     ms[varName] = ms_new;
                 }
 
                 //If this is first time, initlalise all the moving average values with 0
                 if (!vs.ContainsKey(varName))
                 {
-                    var vs_new = new NDArray(param.Shape);
-                    vs_new.Fill(0);
+                    var vs_new = Constant(0, param.Shape);
                     vs[varName] = vs_new;
                 }
 
@@ -89,8 +87,8 @@ namespace NeuroSimple.Optimizers
                 vs[varName] = (Beta2 * vs[varName]) + (1 - Beta2) * Square(grad);
 
                 //Correct the moving averages
-                var m_cap = ms[varName] / (1 - Math.Pow(Beta1, iteration));
-                var v_cap = vs[varName] / (1 - Math.Pow(Beta2, iteration));
+                var m_cap = ms[varName] / (1 - (float)Math.Pow(Beta1, iteration));
+                var v_cap = vs[varName] / (1 - (float)Math.Pow(Beta2, iteration));
 
                 //Update the weight of of the neurons
                 layer.Parameters[paramName] = param - (LearningRate * m_cap / (Sqrt(v_cap) + Epsilon));
